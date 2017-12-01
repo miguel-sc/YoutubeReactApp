@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import SearchForm from './SearchForm.js';
-import './App.css';
+import React, { Component } from 'react'
+import SearchForm from './SearchForm.js'
+import './App.css'
 
 class App extends Component {
   render() {
@@ -8,8 +8,8 @@ class App extends Component {
       <div>
         <SearchForm />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class SearchForm extends Component {
   render() {
@@ -7,8 +7,8 @@ class SearchForm extends Component {
         <input type="text" placeholder="Search" />
   			<input type="submit" />
 			</form>
-    );
+    )
   }
 }
 
-export default SearchForm;
+export default SearchForm
