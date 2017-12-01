@@ -4,7 +4,7 @@ class VideoListItem extends Component {
   render() {
     return (
       <li>
-        <p>item</p>
+        <p>{this.props.video}</p>
 			</li>
     )
   }
