@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 
 class SearchForm extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { searchTerm: '' }
+		this.state = {
+			searchTerm: ''
+		}
 	}
 
 	handleInputChange = event => {
@@ -15,7 +18,8 @@ class SearchForm extends Component {
 		if (this.state.searchTerm !== '') {
 			this.props.fetchSearchResults(this.state.searchTerm)
 				.then(output => this.props.fetchSearchResultsStatistics(output))
-			this.setState({ searchTerm: '' })
+				.then(this.props.history.push('/search='+this.state.searchTerm))
+				.then(this.setState({ searchTerm: '' }))
 		}
 	}
 
@@ -34,4 +38,4 @@ class SearchForm extends Component {
   }
 }
 
-export default SearchForm
+export default withRouter(SearchForm)

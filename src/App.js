@@ -1,31 +1,22 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import SearchForm from './SearchForm'
-import VideoList from './VideoList'
-import { fetchSearchResults, fetchSearchResultsStatistics } from './actions'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css'
-
-const mapStateToProps = function(state){
-  return {
-    searchResults: state.searchResults,
-    searchResultsStatistics: state.searchResultsStatistics
-  }
-}
-
-const mapDispatchToProps = function (dispatch) {
-  return bindActionCreators({ fetchSearchResults: fetchSearchResults, fetchSearchResultsStatistics: fetchSearchResultsStatistics }, dispatch)
-}
+import HomePage from './pages/HomePage';
+import SearchResultsPage from './pages/SearchResultsPage';
+import VideoPage from './pages/VideoPage';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <SearchForm fetchSearchResults={this.props.fetchSearchResults} fetchSearchResultsStatistics={this.props.fetchSearchResultsStatistics}/>
-        <VideoList searchResults={this.props.searchResults} searchResultsStatistics={this.props.searchResultsStatistics}/>
-      </div>
+      <Router>
+        <div>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/search=:id" component={SearchResultsPage} />
+          <Route path="/video=:id" component={VideoPage} />
+        </div>
+      </Router>
     )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

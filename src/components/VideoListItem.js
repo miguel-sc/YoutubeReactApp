@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 function getDate(string) {
   return string.substring(8,10)+'.'+string.substring(5,7)+'.'+string.substring(0,4)
@@ -24,7 +25,7 @@ class VideoListItem extends Component {
     if ((this.props.videoStatistics)&&(this.props.video)) {
       return (
         <li>
-          <a href="#">
+          <Link to={'/video='+this.props.video.id.videoId}>
             <img
               src={this.props.video.snippet.thumbnails.high.url}
               alt="Smiley face"
@@ -35,7 +36,7 @@ class VideoListItem extends Component {
             <p>{this.props.video.snippet.channelTitle}</p>
             <p>{getViews(this.props.videoStatistics.items[0].statistics.viewCount)+' views'}</p>
             <p>{getDate(this.props.video.snippet.publishedAt)}</p>
-          </a>
+          </Link>
 			  </li>
       )
     }

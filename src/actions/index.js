@@ -16,7 +16,6 @@ export function fetchSearchResultsStatistics(action) {
     const url = 'https://www.googleapis.com/youtube/v3/videos?part=statistics&id='+items[i].id.videoId+'&key='+API_KEY
     searchResultsStatistics.push(fetch(url).then(response => response.json()))
   }
-  console.log(searchResultsStatistics)
   return {
     type: 'FETCH_SEARCHRESULTS_STATISTICS',
     payload: Promise.all(searchResultsStatistics)
