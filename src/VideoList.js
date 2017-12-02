@@ -5,11 +5,9 @@ class VideoList extends Component {
   render() {
     return (
       <ul>
-      {this.props.searchResults.map(video => {
-          return (
-            <VideoListItem key={video.id.videoId} video={video} />
-          )
-        })}
+        {this.props.searchResults.map(
+          video => <VideoListItem key={video.id.videoId} video={video} />
+        )}
       </ul>
     )
   }

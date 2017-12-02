@@ -12,7 +12,7 @@ class SearchForm extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		if (this.state.searchTerm != '') {
+		if (this.state.searchTerm !== '') {
 			this.props.fetchSearchResults(this.state.searchTerm)
 			this.setState({ searchTerm: '' })
 		}
