@@ -17,3 +17,7 @@ li {
   width: 240px;
   margin: 5px;
 }
+
+a {
+  text-decoration: none;
+}
