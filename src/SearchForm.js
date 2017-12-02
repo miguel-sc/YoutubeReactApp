@@ -14,6 +14,7 @@ class SearchForm extends Component {
 		event.preventDefault()
 		if (this.state.searchTerm !== '') {
 			this.props.fetchSearchResults(this.state.searchTerm)
+				.then(output => this.props.fetchSearchResultsStatistics(output))
 			this.setState({ searchTerm: '' })
 		}
 	}
