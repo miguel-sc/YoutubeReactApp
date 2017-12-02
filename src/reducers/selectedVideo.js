@@ -1,4 +1,7 @@
-const selectedVideo = (state = '', action) => {
+const selectedVideo = (state = {}, action) => {
+  if (action.type === 'SELECTVIDEO') {
+    return action.payload
+  }
   return state;
 }
 

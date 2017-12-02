@@ -3,12 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchSearchResults, fetchSearchResultsStatistics } from './../actions'
 import SearchForm from './../components/SearchForm'
-import VideoList from './../components/VideoList'
+import Video from './../components/Video'
 
 const mapStateToProps = function(state){
   return {
     searchResults: state.searchResults,
-    searchResultsStatistics: state.searchResultsStatistics
+    searchResultsStatistics: state.searchResultsStatistics,
+    selectedVideo: state.selectedVideo
   }
 }
 
@@ -24,7 +25,7 @@ class VideoPage extends Component {
     return (
       <div>
         <SearchForm fetchSearchResults={this.props.fetchSearchResults} fetchSearchResultsStatistics={this.props.fetchSearchResultsStatistics}/>
-        <VideoList searchResults={this.props.searchResults} searchResultsStatistics={this.props.searchResultsStatistics}/>
+        <Video video={this.props.selectedVideo}/>
       </div>
     )
   }

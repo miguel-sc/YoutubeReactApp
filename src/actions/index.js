@@ -21,3 +21,10 @@ export function fetchSearchResultsStatistics(action) {
     payload: Promise.all(searchResultsStatistics)
   }
 }
+
+export function selectVideo(video) {
+  return {
+    type: 'SELECTVIDEO',
+    payload: video
+  }
+}

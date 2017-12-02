@@ -25,7 +25,10 @@ class VideoListItem extends Component {
     if ((this.props.videoStatistics)&&(this.props.video)) {
       return (
         <li>
-          <Link to={'/video='+this.props.video.id.videoId}>
+          <Link
+            onClick={() => {this.props.selectVideo(this.props.video)}}
+            to={'/video='+this.props.video.id.videoId}
+          >
             <img
               src={this.props.video.snippet.thumbnails.high.url}
               alt="Smiley face"
