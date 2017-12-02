@@ -1,6 +1,6 @@
 const searchResults = (state = [], action) => {
   if (action.type === 'FETCH_SEARCHRESULTS') {
-    return [...action.payload.items]
+    return action.payload
   } else {
     return state;
   }

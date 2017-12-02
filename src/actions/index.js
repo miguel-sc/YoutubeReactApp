@@ -28,3 +28,10 @@ export function selectVideo(video) {
     payload: video
   }
 }
+
+export function setSearchTerm(searchTerm) {
+  return {
+    type: 'SEARCHTERM',
+    payload: searchTerm
+  }
+}
