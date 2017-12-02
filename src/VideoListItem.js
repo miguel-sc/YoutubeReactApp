@@ -1,7 +1,22 @@
 import React, { Component } from 'react'
 
 function getDate(string) {
-  return string.substring(8,10)+' '+string.substring(5,7)+' '+string.substring(0,4)
+  return string.substring(8,10)+'.'+string.substring(5,7)+'.'+string.substring(0,4)
+}
+
+function getViews(string) {
+  if (string.length > 9) {
+    return string.substring(0,string.length-9)+'.'+string.substring(string.length-9,string.length-8)+'B'
+  }
+  else if (string.length > 6) {
+    return string.substring(0,string.length-6)+'M'
+  }
+  else if (string.length > 3) {
+    return string.substring(0,string.length-3)+'K'
+  }
+  else {
+    return string
+  }
 }
 
 class VideoListItem extends Component {
@@ -18,7 +33,7 @@ class VideoListItem extends Component {
             />
             <p>{this.props.video.snippet.title}</p>
             <p>{this.props.video.snippet.channelTitle}</p>
-            <p>{this.props.videoStatistics.items[0].statistics.viewCount}</p>
+            <p>{getViews(this.props.videoStatistics.items[0].statistics.viewCount)+' views'}</p>
             <p>{getDate(this.props.video.snippet.publishedAt)}</p>
           </a>
 			  </li>
