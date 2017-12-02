@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SearchForm from './SearchForm'
 import VideoList from './VideoList'
+import { fetchSearchResults } from './actions'
 import './App.css'
 
 const mapStateToProps = function(state){
@@ -12,15 +13,14 @@ const mapStateToProps = function(state){
 }
 
 const mapDispatchToProps = function (dispatch) {
-  return bindActionCreators({
-  }, dispatch)
+  return bindActionCreators({ fetchSearchResults: fetchSearchResults }, dispatch)
 }
 
 class App extends Component {
   render() {
     return (
       <div>
-        <SearchForm/>
+        <SearchForm fetchSearchResults={this.props.fetchSearchResults}/>
         <VideoList searchResults={this.props.searchResults}/>
       </div>
     )

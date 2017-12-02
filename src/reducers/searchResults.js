@@ -1,5 +1,9 @@
-const searchResults = (state = [1,2,3,4,5], action) => {
-  return state;
+const searchResults = (state = [], action) => {
+  if (action.type === 'FETCH_SEARCHRESULTS') {
+    return [...action.payload.items]
+  } else {
+    return state;
+  }
 }
 
 export default searchResults
