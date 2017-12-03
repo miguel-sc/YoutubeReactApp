@@ -4,13 +4,15 @@ import searchResults from './searchResults'
 import searchResultsStats from './searchResultsStats'
 import searchTerm from './searchTerm'
 import selectedVideoStats from './selectedVideoStats'
+import commentList from './commentList'
 
 const reducer = combineReducers({
   selectedVideo,
   searchResults,
   searchResultsStats,
   searchTerm,
-  selectedVideoStats
+  selectedVideoStats,
+  commentList
 })
 
 export default reducer

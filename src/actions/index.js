@@ -66,3 +66,22 @@ export function setSearchTerm(searchTerm) {
     payload: searchTerm
   }
 }
+
+export function fetchComments(videoId) {
+  const url = 'https://www.googleapis.com/youtube/v3/commentThreads?order=relevance&maxResults=6&textFormat=plainText&part=snippet&videoId='+videoId+'&key='+API_KEY
+  const commentsPayload = fetch(url).then(response => response.json())
+  return {
+    type: 'FETCH_COMMENTS',
+    payload: commentsPayload
+  }
+}
+
+export function fetchMoreComments(videoId, pageToken) {
+  const url = 'https://www.googleapis.com/youtube/v3/commentThreads?order=relevance&maxResults=6&textFormat=plainText&part=snippet&videoId='+videoId+'&pageToken='+pageToken+'&key='+API_KEY
+  const moreCommentsPayload = fetch(url).then(response => response.json())
+  return {
+    type: 'FETCH_MORECOMMENTS',
+    payload: moreCommentsPayload
+  }
+
+}
