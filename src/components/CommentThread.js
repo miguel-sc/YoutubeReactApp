@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import Comment from './Comment'
+import reactLogo from './../svg/reactLogo.svg'
+import { Loader } from './../styles/componentStyles.js'
 
 class CommentThread extends Component {
 
@@ -37,7 +39,7 @@ class CommentThread extends Component {
   }
 
   render() {
-    const loader = <div>Loading ...</div>
+    const loader = <Loader src={reactLogo} alt="loader" />
     var items = []
     if (this.props.commentList.items) {
       for (var index = 0; index < this.props.commentList.items.length; index++) {

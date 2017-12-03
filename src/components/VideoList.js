@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import VideoListItem from './VideoListItem'
+import reactLogo from './../svg/reactLogo.svg'
+import { Loader } from './../styles/componentStyles.js'
 
 class VideoList extends Component {
 
@@ -22,7 +24,7 @@ class VideoList extends Component {
 
   render() {
     if ((this.props.searchResults.items)&&(this.props.searchResultsStats.items)) {
-      const loader = <div>Loading ...</div>
+      const loader = <Loader src={reactLogo} alt="loader" />
       var items = []
       const length = Math.min(this.props.searchResults.items.length, this.props.searchResultsStats.items.length)
       for (var index = 0; index < length; index++) {
