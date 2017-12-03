@@ -22,15 +22,14 @@ class VideoList extends Component {
 
   render() {
     if ((this.props.searchResults.items)&&(this.props.searchResultsStats.items)) {
-      const itemList = [...this.props.searchResults.items]
       const loader = <div>Loading ...</div>
       var items = []
       const length = Math.min(this.props.searchResults.items.length, this.props.searchResultsStats.items.length)
       for (var index = 0; index < length; index++) {
         items.push(
           <VideoListItem
-            key={itemList[index].id.videoId}
-            video={itemList[index]}
+            key={this.props.searchResults.items[index].id.videoId}
+            video={this.props.searchResults.items[index]}
             videoStats={this.props.searchResultsStats.items[index]}
             selectVideo={this.props.selectVideo}
             selectVideoStats={this.props.selectVideoStats}

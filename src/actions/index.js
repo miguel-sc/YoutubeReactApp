@@ -10,7 +10,7 @@ export function fetchSearchResults(searchTerm) {
 }
 
 export function fetchSearchResultsStats(action) {
-  const items = [...action.payload.items]
+  const items = action.payload.items
   var id= items[0].id.videoId
   for (var i = 1; i < items.length; i++) {
     id+=','+items[i].id.videoId
@@ -33,7 +33,7 @@ export function fetchMore(searchTerm, pageToken) {
 }
 
 export function fetchMoreStats(action) {
-  const items = [...action.payload.items]
+  const items = action.payload.items
   var id= items[0].id.videoId
   for (var i = items.length-6; i < items.length; i++) {
     id+=','+items[i].id.videoId
