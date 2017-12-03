@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchSearchResults, fetchSearchResultsStatistics, selectVideo, setSearchTerm } from './../actions'
+import { fetchSearchResults, fetchSearchResultsStatistics, selectVideo, setSearchTerm, fetchMore } from './../actions'
 import SearchForm from './../components/SearchForm'
 import VideoList from './../components/VideoList'
 
@@ -18,7 +18,8 @@ const mapDispatchToProps = function (dispatch) {
     fetchSearchResults: fetchSearchResults,
     fetchSearchResultsStatistics: fetchSearchResultsStatistics,
     selectVideo: selectVideo,
-    setSearchTerm: setSearchTerm
+    setSearchTerm: setSearchTerm,
+    fetchMore: fetchMore
   }, dispatch)
 }
 
@@ -36,6 +37,8 @@ class SearchResultsPage extends Component {
           searchResultsStatistics={this.props.searchResultsStatistics}
           selectVideo={this.props.selectVideo}
           searchTerm={this.props.searchTerm}
+          fetchMore={this.props.fetchMore}
+          fetchSearchResultsStatistics={this.props.fetchSearchResultsStatistics}
         />
       </div>
     )

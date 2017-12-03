@@ -6,18 +6,21 @@ function getDate(string) {
 }
 
 function getViews(string) {
-  if (string.length > 9) {
-    return string.substring(0,string.length-9)+'.'+string.substring(string.length-9,string.length-8)+'B'
+  if (string){
+    if (string.length > 9) {
+      return string.substring(0,string.length-9)+'.'+string.substring(string.length-9,string.length-8)+'B'
+    }
+    else if (string.length > 6) {
+      return string.substring(0,string.length-6)+'M'
+    }
+    else if (string.length > 3) {
+      return string.substring(0,string.length-3)+'K'
+    }
+    else {
+      return string
+    }
   }
-  else if (string.length > 6) {
-    return string.substring(0,string.length-6)+'M'
-  }
-  else if (string.length > 3) {
-    return string.substring(0,string.length-3)+'K'
-  }
-  else {
-    return string
-  }
+  return ''
 }
 
 class VideoListItem extends Component {

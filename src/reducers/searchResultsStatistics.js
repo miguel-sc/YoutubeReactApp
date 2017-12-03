@@ -1,6 +1,11 @@
 const searchResultsStatistics = (state = [], action) => {
   if (action.type === 'FETCH_SEARCHRESULTS_STATISTICS') {
-    return action.payload
+    if (action.payload.length !== state.length) {
+      return action.payload
+    }
+    else {
+      return state;
+    }
   } else {
     return state;
   }

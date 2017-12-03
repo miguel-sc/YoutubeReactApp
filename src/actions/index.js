@@ -1,7 +1,7 @@
 const API_KEY = 'AIzaSyD7YNsw1SJqchzfVqy3dv5FBV1fiTe4TgA'
 
 export function fetchSearchResults(searchTerm) {
-  const url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&type=video&q='+searchTerm+'&key='+API_KEY
+  const url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q='+searchTerm+'&key='+API_KEY
   const searchResultsPayload = fetch(url).then(response => response.json())
   return {
     type: 'FETCH_SEARCHRESULTS',
@@ -19,6 +19,15 @@ export function fetchSearchResultsStatistics(action) {
   return {
     type: 'FETCH_SEARCHRESULTS_STATISTICS',
     payload: Promise.all(searchResultsStatistics)
+  }
+}
+
+export function fetchMore(searchTerm, pageToken) {
+  const url = 'https://www.googleapis.com/youtube/v3/search?pageToken='+pageToken+'&part=snippet&type=video&q='+searchTerm+'&key='+API_KEY
+  const fetchMorePayload = fetch(url).then(response => response.json())
+  return {
+    type: 'FETCH_MORE',
+    payload: fetchMorePayload
   }
 }
 
