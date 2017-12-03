@@ -11,14 +11,15 @@ export function fetchSearchResults(searchTerm) {
 
 export function fetchSearchResultsStats(action) {
   const items = [...action.payload.items]
-  var searchResultsStats = []
-  for (var i = 0; i < items.length; i++) {
-    const url = 'https://www.googleapis.com/youtube/v3/videos?part=statistics&id='+items[i].id.videoId+'&key='+API_KEY
-    searchResultsStats.push(fetch(url).then(response => response.json()))
+  var id= items[0].id.videoId
+  for (var i = 1; i < items.length; i++) {
+    id+=','+items[i].id.videoId
   }
+  const url = 'https://www.googleapis.com/youtube/v3/videos?part=statistics&id='+id+'&key='+API_KEY
+  const searchResultsStats = fetch(url).then(response => response.json())
   return {
     type: 'FETCH_SEARCHRESULTS_STATS',
-    payload: Promise.all(searchResultsStats)
+    payload: searchResultsStats
   }
 }
 
@@ -28,6 +29,20 @@ export function fetchMore(searchTerm, pageToken) {
   return {
     type: 'FETCH_MORE',
     payload: fetchMorePayload
+  }
+}
+
+export function fetchMoreStats(action) {
+  const items = [...action.payload.items]
+  var id= items[0].id.videoId
+  for (var i = items.length-6; i < items.length; i++) {
+    id+=','+items[i].id.videoId
+  }
+  const url = 'https://www.googleapis.com/youtube/v3/videos?part=statistics&id='+id+'&key='+API_KEY
+  const fetchMoreStatsPayload = fetch(url).then(response => response.json())
+  return {
+    type: 'FETCH_MORE_STATS',
+    payload: fetchMoreStatsPayload
   }
 }
 

@@ -40,7 +40,7 @@ class VideoListItem extends Component {
             />
             <p>{this.props.video.snippet.title}</p>
             <p>{this.props.video.snippet.channelTitle}</p>
-            <p>{getViews(this.props.videoStats.items[0].statistics.viewCount)+' views'}</p>
+            <p>{getViews(this.props.videoStats.statistics.viewCount)+' views'}</p>
             <p>{getDate(this.props.video.snippet.publishedAt)}</p>
           </Link>
 			  </li>
