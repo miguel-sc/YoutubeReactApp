@@ -1,4 +1,4 @@
-const commentList = (state = [], action) => {
+const commentList = (state = {}, action) => {
   if (action.type === 'FETCH_COMMENTS') {
     return action.payload
   }
@@ -6,8 +6,10 @@ const commentList = (state = [], action) => {
     action.payload.items = state.items.concat(action.payload.items)
     return action.payload
   }
-  else {
-    return state;
+  else if (action.type === 'EMPTYCOMMENTS'){
+    return {}
+  } else {
+    return state
   }
 }
 

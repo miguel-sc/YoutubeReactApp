@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchSearchResults, fetchSearchResultsStats, setSearchTerm, fetchComments, fetchMoreComments } from './../actions'
+import { fetchSearchResults, fetchSearchResultsStats, setSearchTerm, emptyComments, fetchComments, fetchMoreComments } from './../actions'
 import SearchForm from './../components/SearchForm'
 import Video from './../components/Video'
 import CommentThread from './../components/CommentThread'
@@ -22,7 +22,8 @@ const mapDispatchToProps = function (dispatch) {
     fetchSearchResultsStats: fetchSearchResultsStats,
     setSearchTerm: setSearchTerm,
     fetchComments: fetchComments,
-    fetchMoreComments: fetchMoreComments
+    fetchMoreComments: fetchMoreComments,
+    emptyComments: emptyComments
   }, dispatch)
 }
 
@@ -44,6 +45,7 @@ class VideoPage extends Component {
           commentList={this.props.commentList}
           fetchComments={this.props.fetchComments}
           fetchMoreComments={this.props.fetchMoreComments}
+          emptyComments={this.props.emptyComments}
         />
       </div>
     )

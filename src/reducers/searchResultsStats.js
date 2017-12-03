@@ -1,4 +1,4 @@
-const searchResultsStats = (state = [], action) => {
+const searchResultsStats = (state = {}, action) => {
   if (action.type === 'FETCH_SEARCHRESULTS_STATS') {
       return action.payload
   }

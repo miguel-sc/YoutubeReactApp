@@ -15,6 +15,7 @@ class CommentThread extends Component {
     if ((this.props.video.id)&&(this.props.commentList.items)) {
         if (this.props.video.id.videoId !== this.props.commentList.items[0].snippet.videoId) {
           this.setState({loadMore: false})
+          this.props.emptyComments()
           this.props.fetchComments(this.props.video.id.videoId)
             .then(output => {this.setState({loadMore: true})})
         }

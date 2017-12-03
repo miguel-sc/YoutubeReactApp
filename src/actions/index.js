@@ -67,6 +67,12 @@ export function setSearchTerm(searchTerm) {
   }
 }
 
+export function emptyComments() {
+  return {
+    type: 'EMPTYCOMMENTS'
+  }
+}
+
 export function fetchComments(videoId) {
   const url = 'https://www.googleapis.com/youtube/v3/commentThreads?order=relevance&maxResults=24&textFormat=plainText&part=snippet&videoId='+videoId+'&key='+API_KEY
   const commentsPayload = fetch(url).then(response => response.json())
