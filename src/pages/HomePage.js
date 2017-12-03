@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchSearchResults, fetchSearchResultsStatistics, setSearchTerm } from './../actions'
+import { fetchSearchResults, fetchSearchResultsStats, setSearchTerm } from './../actions'
 import SearchForm from './../components/SearchForm'
 
 const mapStateToProps = function(state){
   return {
     searchResults: state.searchResults,
-    searchResultsStatistics: state.searchResultsStatistics
+    searchResultsStats: state.searchResultsStats
   }
 }
 
 const mapDispatchToProps = function (dispatch) {
   return bindActionCreators({
     fetchSearchResults: fetchSearchResults,
-    fetchSearchResultsStatistics: fetchSearchResultsStatistics,
+    fetchSearchResultsStats: fetchSearchResultsStats,
     setSearchTerm: setSearchTerm
   }, dispatch)
 }
@@ -25,7 +25,7 @@ class HomePage extends Component {
       <div>
         <SearchForm
           fetchSearchResults={this.props.fetchSearchResults}
-          fetchSearchResultsStatistics={this.props.fetchSearchResultsStatistics}
+          fetchSearchResultsStats={this.props.fetchSearchResultsStats}
           setSearchTerm={this.props.setSearchTerm}
         />
       </div>

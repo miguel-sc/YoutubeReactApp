@@ -15,7 +15,7 @@ class VideoList extends Component {
     if (this.state.loadMore) {
       this.setState({loadMore: false})
       this.props.fetchMore(this.props.searchTerm, this.props.searchResults.nextPageToken)
-        .then(output => this.props.fetchSearchResultsStatistics(output)
+        .then(output => this.props.fetchSearchResultsStats(output)
           .then(this.setState({loadMore: true})))
     }
   }
@@ -25,14 +25,15 @@ class VideoList extends Component {
       const itemList = [...this.props.searchResults.items]
       const loader = <div>Loading ...</div>
       var items = []
-      const length = Math.min(this.props.searchResults.items.length, this.props.searchResultsStatistics.length)
+      const length = Math.min(this.props.searchResults.items.length, this.props.searchResultsStats.length)
       for (var index = 0; index < length; index++) {
         items.push(
           <VideoListItem
             key={itemList[index].id.videoId}
             video={itemList[index]}
-            videoStatistics={this.props.searchResultsStatistics[index]}
+            videoStats={this.props.searchResultsStats[index]}
             selectVideo={this.props.selectVideo}
+            selectVideoStats={this.props.selectVideoStats}
           />
         )
       }

@@ -1,5 +1,5 @@
-const searchResultsStatistics = (state = [], action) => {
-  if (action.type === 'FETCH_SEARCHRESULTS_STATISTICS') {
+const searchResultsStats = (state = [], action) => {
+  if (action.type === 'FETCH_SEARCHRESULTS_STATS') {
     if (action.payload.length !== state.length) {
       return action.payload
     }
@@ -11,4 +11,4 @@ const searchResultsStatistics = (state = [], action) => {
   }
 }
 
-export default searchResultsStatistics
+export default searchResultsStats

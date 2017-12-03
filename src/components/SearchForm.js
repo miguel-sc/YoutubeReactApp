@@ -18,7 +18,7 @@ class SearchForm extends Component {
 		if (this.state.searchTerm !== '') {
 			this.props.setSearchTerm(this.state.searchTerm)
 			this.props.fetchSearchResults(this.state.searchTerm)
-				.then(output => this.props.fetchSearchResultsStatistics(output))
+				.then(output => this.props.fetchSearchResultsStats(output))
 				.then(this.props.history.push('/search='+this.state.searchTerm))
 				.then(this.setState({ searchTerm: '' }))
 		}

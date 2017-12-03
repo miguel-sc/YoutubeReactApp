@@ -25,11 +25,11 @@ function getViews(string) {
 
 class VideoListItem extends Component {
   render() {
-    if ((this.props.videoStatistics)&&(this.props.video)) {
+    if ((this.props.videoStats)&&(this.props.video)) {
       return (
         <li>
           <Link
-            onClick={() => {this.props.selectVideo(this.props.video)}}
+            onClick={() => {this.props.selectVideo(this.props.video);this.props.selectVideoStats(this.props.videoStats)}}
             to={'/video='+this.props.video.id.videoId}
           >
             <img
@@ -40,7 +40,7 @@ class VideoListItem extends Component {
             />
             <p>{this.props.video.snippet.title}</p>
             <p>{this.props.video.snippet.channelTitle}</p>
-            <p>{getViews(this.props.videoStatistics.items[0].statistics.viewCount)+' views'}</p>
+            <p>{getViews(this.props.videoStats.items[0].statistics.viewCount)+' views'}</p>
             <p>{getDate(this.props.video.snippet.publishedAt)}</p>
           </Link>
 			  </li>
