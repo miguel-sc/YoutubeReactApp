@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import VideoListItem from './VideoListItem'
 import reactLogo from './../svg/reactLogo.svg'
-import { Loader } from './../styles/componentStyles.js'
+import { Loader, Button } from './StyledComponents.js'
 
 class VideoList extends Component {
 
@@ -24,7 +24,7 @@ class VideoList extends Component {
 
   render() {
     if ((this.props.searchResults.items)&&(this.props.searchResultsStats.items)) {
-      const loader = <Loader src={reactLogo} alt="loader" />
+      const loader = <Loader><img src={reactLogo} alt="loader" /></Loader>
       var items = []
       const length = Math.min(this.props.searchResults.items.length, this.props.searchResultsStats.items.length)
       for (var index = 0; index < length; index++) {
@@ -40,7 +40,7 @@ class VideoList extends Component {
       }
       return (
         <div>
-          <h2>{'Results for: '+this.props.searchTerm}</h2>
+          <h2>{'Results for: ' + this.props.searchTerm}</h2>
           <InfiniteScroll
             loadMore={this.loadItems.bind(this)}
             hasMore={true}

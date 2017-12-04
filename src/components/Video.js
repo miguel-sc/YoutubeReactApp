@@ -26,10 +26,15 @@ class Video extends Component {
 
   render() {
     if ((this.props.video.id)&&(this.props.videoStats)) {
-      const url = 'https://www.youtube.com/embed/'+this.props.video.id.videoId+'?autoplay=1'
+      const url = 'https://www.youtube.com/embed/'+this.props.video.id.videoId+'?autoplay=1&iv_load_policy=3&showinfo=0&rel=0'
       return (
         <div>
-          <iframe src={url} title={this.props.video.id.videoId}/>
+          <iframe
+            src={url}
+            title={this.props.video.id.videoId}
+            allowFullScreen='allowFullScreen'
+            frameBorder='0'
+          />
           <p>{this.props.video.snippet.title}</p>
           <p>{this.props.video.snippet.channelTitle}</p>
           <p>{getViews(this.props.videoStats.statistics.viewCount)+' views'}</p>
