@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import Comment from './Comment'
-import reactLogo from './../svg/reactLogo.svg'
-import { Loader } from './StyledComponents.js'
+import Spinner from './Spinner'
 
 class CommentThread extends Component {
 
@@ -39,7 +38,7 @@ class CommentThread extends Component {
   }
 
   render() {
-    const loader = <Loader><img src={reactLogo} alt="loader" /></Loader>
+    const spinner = <Spinner/>
     var items = []
     if (this.props.commentList.items) {
       for (var index = 0; index < this.props.commentList.items.length; index++) {
@@ -57,7 +56,7 @@ class CommentThread extends Component {
             loadMore={this.loadItems.bind(this)}
             hasMore={true}
             initialLoad={true}
-            loader={loader}>
+            loader={spinner}>
             <ul>
               {items}
             </ul>

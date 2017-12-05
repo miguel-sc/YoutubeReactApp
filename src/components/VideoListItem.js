@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Thumbnail from './Thumbnail'
 
 function getDate(string) {
   return string.substring(8,10)+'.'+string.substring(5,7)+'.'+string.substring(0,4)
@@ -32,11 +33,8 @@ class VideoListItem extends Component {
             onClick={() => {this.props.selectVideo(this.props.video);this.props.selectVideoStats(this.props.videoStats)}}
             to={'/video='+this.props.video.id.videoId}
           >
-            <img
-              src={this.props.video.snippet.thumbnails.high.url}
-              alt="Smiley face"
-              width={this.props.video.snippet.thumbnails.high.width / 2}
-              height={this.props.video.snippet.thumbnails.high.height / 2}
+            <Thumbnail
+              video={this.props.video}
             />
             <p>{this.props.video.snippet.title}</p>
             <p>{this.props.video.snippet.channelTitle}</p>

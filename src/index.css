@@ -5,12 +5,13 @@ body {
 }
 
 ul {
-  padding-left: 50px;
-  padding-right: 50px;
+  margin-left: -5px;
+  margin-right: -5px;
+  padding-left: 0px;
+  padding-right: 0px;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 li {
@@ -21,9 +22,4 @@ li {
 a {
   text-decoration: none;
   color:inherit;
-}
-
-iframe {
-  width: 640px;
-  height: 360px;
 }

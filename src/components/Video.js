@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 function getDate(string) {
   return string.substring(8,10)+'.'+string.substring(5,7)+'.'+string.substring(0,4)
@@ -29,12 +30,14 @@ class Video extends Component {
       const url = 'https://www.youtube.com/embed/'+this.props.video.id.videoId+'?autoplay=1&iv_load_policy=3&showinfo=0&rel=0'
       return (
         <div>
-          <iframe
-            src={url}
-            title={this.props.video.id.videoId}
-            allowFullScreen='allowFullScreen'
-            frameBorder='0'
-          />
+          <VideoContainer>
+            <iframe
+              src={url}
+              title={this.props.video.id.videoId}
+              allowFullScreen='allowFullScreen'
+              frameBorder='0'
+            />
+          </VideoContainer>
           <p>{this.props.video.snippet.title}</p>
           <p>{this.props.video.snippet.channelTitle}</p>
           <p>{getViews(this.props.videoStats.statistics.viewCount)+' views'}</p>
@@ -48,3 +51,17 @@ class Video extends Component {
 }
 
 export default Video
+
+const VideoContainer = styled.div`
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  position: relative;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`
