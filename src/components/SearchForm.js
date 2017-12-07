@@ -3,26 +3,27 @@ import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
 class SearchForm extends Component {
-	constructor(props) {
-		super(props);
+
+	constructor ( props ) {
+		super( props )
 		this.state = {
 			searchTerm: ''
 		}
 	}
 
-	handleInputChange = event => {
+	handleInputChange = ( event ) => {
 		this.setState({ searchTerm: event.target.value })
 	}
 
-	handleSubmit = event => {
+	handleSubmit = ( event ) => {
 		event.preventDefault()
-		if (this.state.searchTerm !== '') {
+		if ( this.state.searchTerm !== '' ) {
 			const searchTerm = this.state.searchTerm
 			this.setState({ searchTerm: '' })
-			this.props.setSearchTerm(searchTerm)
-			this.props.fetchSearchResults(searchTerm)
-				.then(output => this.props.fetchSearchResultsStats(output)
-					.then(this.props.history.push('/search='+searchTerm))
+			this.props.setSearchTerm( searchTerm )
+			this.props.fetchSearchResults( searchTerm )
+				.then( output => this.props.fetchSearchResultsStats( output )
+					.then( this.props.history.push( `/search=${ searchTerm }` ))
 				)
 		}
 	}
@@ -30,26 +31,27 @@ class SearchForm extends Component {
   render() {
     return (
 			<SearchFormContainer>
-				<form onSubmit={this.handleSubmit}>
-				  <input type="text"
-						name="searchTerm"
-				    value={this.state.searchTerm}
-				    onChange={this.handleInputChange}
-				    placeholder="Search"
+				<form onSubmit = { this.handleSubmit }>
+				  <input
+						type = 'text'
+						name = 'searchTerm'
+				    value = { this.state.searchTerm }
+				    onChange = { this.handleInputChange }
+				    placeholder = 'Search YouTube'
 					/>
-					<input type="submit" />
+					<input type = 'submit' />
 				</form>
 			</SearchFormContainer>
     )
   }
 }
 
-export default withRouter(SearchForm)
+export default withRouter( SearchForm )
 
 const SearchFormContainer = styled.div`
 	margin-top: 25px;
 	margin-bottom: 25px;
-	input[type=text] {
+	input[ type = text ] {
 		font-size: 14px;
 		width: calc(100% - 40px);
 		height: 28px;
@@ -58,7 +60,7 @@ const SearchFormContainer = styled.div`
 		border: 1px solid #ccc;
 	}
 
-	input[type=submit] {
+	input[ type = submit ] {
 		display: none;
 	}
 `

@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class Thumbnail extends Component {
+  
   render() {
     return (
       <ThumbnailContainer>
         <img
-          src={this.props.video.snippet.thumbnails.high.url}
-          alt={this.props.video.snippet.title}
-          width={this.props.video.snippet.thumbnails.high.width / 2}
-          height={this.props.video.snippet.thumbnails.high.height / 2}
+          src = { this.props.video.snippet.thumbnails.high.url }
+          alt = { this.props.video.snippet.title }
+          width = { this.props.video.snippet.thumbnails.high.width / 2 }
+          height = { this.props.video.snippet.thumbnails.high.height / 2 }
         />
       </ThumbnailContainer>
     )

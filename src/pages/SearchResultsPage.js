@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import { fetchSearchResults, fetchSearchResultsStats, selectVideo, setSearchTerm, fetchMore, fetchMoreStats, selectVideoStats } from './../actions'
 import SearchForm from './../components/SearchForm'
 import VideoList from './../components/VideoList'
 
-const mapStateToProps = function(state){
+const mapStateToProps = ( state ) => {
   return {
     searchResults: state.searchResults,
     searchResultsStats: state.searchResultsStats,
@@ -13,7 +13,7 @@ const mapStateToProps = function(state){
   }
 }
 
-const mapDispatchToProps = function (dispatch) {
+const mapDispatchToProps = ( dispatch ) => {
   return bindActionCreators({
     fetchSearchResults: fetchSearchResults,
     fetchSearchResultsStats: fetchSearchResultsStats,
@@ -22,7 +22,7 @@ const mapDispatchToProps = function (dispatch) {
     setSearchTerm: setSearchTerm,
     fetchMore: fetchMore,
     fetchMoreStats: fetchMoreStats
-  }, dispatch)
+  }, dispatch )
 }
 
 class SearchResultsPage extends Component {
@@ -30,23 +30,23 @@ class SearchResultsPage extends Component {
     return (
       <div>
         <SearchForm
-          fetchSearchResults={this.props.fetchSearchResults}
-          fetchSearchResultsStats={this.props.fetchSearchResultsStats}
-          setSearchTerm={this.props.setSearchTerm}
+          fetchSearchResults = { this.props.fetchSearchResults }
+          fetchSearchResultsStats = { this.props.fetchSearchResultsStats }
+          setSearchTerm = { this.props.setSearchTerm }
         />
         <VideoList
-          searchResults={this.props.searchResults}
-          searchResultsStats={this.props.searchResultsStats}
-          selectVideo={this.props.selectVideo}
-          searchTerm={this.props.searchTerm}
-          fetchMore={this.props.fetchMore}
-          fetchMoreStats={this.props.fetchMoreStats}
-          fetchSearchResultsStats={this.props.fetchSearchResultsStats}
-          selectVideoStats={this.props.selectVideoStats}
+          searchResults = { this.props.searchResults }
+          searchResultsStats = { this.props.searchResultsStats }
+          selectVideo = { this.props.selectVideo }
+          searchTerm = { this.props.searchTerm }
+          fetchMore = { this.props.fetchMore }
+          fetchMoreStats = { this.props.fetchMoreStats }
+          fetchSearchResultsStats = { this.props.fetchSearchResultsStats }
+          selectVideoStats = { this.props.selectVideoStats }
         />
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsPage)
+export default connect( mapStateToProps, mapDispatchToProps )( SearchResultsPage )
