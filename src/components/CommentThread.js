@@ -8,31 +8,23 @@ class CommentThread extends Component {
   constructor( props ) {
 		super( props )
 		this.state = {
-			loadMore: true
+			hasMore: true,
+      loadMore: true
 		}
 	}
 
-  componentDidMount() {
-    if (( this.props.video.id ) && ( this.props.commentList.items )) {
-        if ( this.props.video.id.videoId !== this.props.commentList.items[0].snippet.videoId ) {
-          this.setState({ loadMore: false })
-          this.props.emptyComments()
-          this.props.fetchComments( this.props.video.id.videoId )
-            .then( output => { this.setState({ loadMore: true })})
-        }
-      }
-  }
-
   loadItems( page ) {
-    if (( this.state.loadMore ) && ( this.props.video.id )) {
-      if ( this.props.commentList.items ) {
+    if (( this.props.video.id ) && ( this.state.loadMore)) {
+      if ( this.props.commentList.nextPageToken ) {
         this.setState({ loadMore: false })
-        this.props.fetchMoreComments( this.props.video.id.videoId, this.props.commentList.nextPageToken )
+        this.props.fetchComments( this.props.video.id.videoId, this.props.commentList.nextPageToken )
           .then( output => { this.setState({ loadMore: true })})
-      } else {
+      } else if (!this.props.commentList.items){
         this.setState({ loadMore: false })
         this.props.fetchComments( this.props.video.id.videoId )
           .then( output => { this.setState({ loadMore: true })})
+      } else {
+        this.setState({ hasMore: false })
       }
     }
   }
@@ -40,7 +32,6 @@ class CommentThread extends Component {
   render() {
     const spinner = <Spinner/>
     var items = []
-    var hasMore = true
     if ( this.props.commentList.items ) {
       for ( var index = 0; index < this.props.commentList.items.length; index++ ) {
         items.push(
@@ -50,15 +41,12 @@ class CommentThread extends Component {
           />
         )
       }
-      if ( !this.props.commentList.nextPageToken ) {
-        hasMore = false
-      }
     }
     return (
       <div>
         <InfiniteScroll
           loadMore = { this.loadItems.bind( this ) }
-          hasMore = { hasMore }
+          hasMore = { this.state.hasMore }
           initialLoad = { true }
           loader = { spinner }
         >

@@ -8,23 +8,33 @@ class VideoList extends Component {
   constructor( props ) {
 		super( props )
 		this.state = {
-			loadMore: true
+			loadMore: true,
+      hasMore: true
 		}
 	}
 
   loadItems( page ) {
-    if ( this.state.loadMore ) {
-      this.setState({ loadMore: false })
-      this.props.fetchMore( this.props.searchTerm, this.props.searchResults.nextPageToken )
-        .then( output => this.props.fetchMoreStats( output )
-          .then( this.setState({ loadMore: true })))
+    if (( this.props.searchTerm ) && ( this.state.loadMore)) {
+      if ( this.props.searchResults.nextPageToken ) {
+        this.setState({ loadMore: false })
+        this.props.fetchSearchResults( this.props.searchTerm, this.props.searchResults.nextPageToken )
+          .then( output => this.props.fetchSearchResultsStats( output )
+            .then( this.setState({ loadMore: true })))
+      } else if (!this.props.searchResults.items){
+        this.setState({ loadMore: false })
+        this.props.fetchSearchResults( this.props.searchTerm )
+          .then( output => this.props.fetchSearchResultsStats( output )
+            .then( this.setState({ loadMore: true })))
+      } else {
+        this.setState({ hasMore: false })
+      }
     }
   }
 
   render() {
+    const spinner = <Spinner/>
+    var items = []
     if (( this.props.searchResults.items ) && ( this.props.searchResultsStats.items )) {
-      const spinner = <Spinner/>
-      var items = []
       const length = Math.min( this.props.searchResults.items.length, this.props.searchResultsStats.items.length )
       for ( var index = 0; index < length; index++ ) {
         items.push(
@@ -37,26 +47,20 @@ class VideoList extends Component {
           />
         )
       }
-      var hasMore = false
-      if ( this.props.searchResults.nextPageToken ) {
-        hasMore = true
-      }
-      return (
-        <div>
-          <InfiniteScroll
-            loadMore = { this.loadItems.bind( this )}
-            hasMore = { hasMore }
-            initialLoad = { true }
-            loader = { spinner }>
-            <ul>
-              { items }
-            </ul>
-          </InfiniteScroll>
-        </div>
-      )
-    } else {
-      return ( <div/> )
     }
+    return (
+      <div>
+        <InfiniteScroll
+          loadMore = { this.loadItems.bind( this )}
+          hasMore = { this.state.hasMore }
+          initialLoad = { true }
+          loader = { spinner }>
+          <ul>
+            { items }
+          </ul>
+        </InfiniteScroll>
+      </div>
+    )
   }
 }
 

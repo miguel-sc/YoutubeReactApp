@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { fetchSearchResults, fetchSearchResultsStats, selectVideo, setSearchTerm, fetchMore, fetchMoreStats, selectVideoStats } from './../actions'
+import { fetchSearchResults, fetchSearchResultsStats, selectVideo, setSearchTerm, selectVideoStats } from './../actions'
 import SearchForm from './../components/SearchForm'
 import VideoList from './../components/VideoList'
 
@@ -19,9 +19,7 @@ const mapDispatchToProps = ( dispatch ) => {
     fetchSearchResultsStats: fetchSearchResultsStats,
     selectVideo: selectVideo,
     selectVideoStats: selectVideoStats,
-    setSearchTerm: setSearchTerm,
-    fetchMore: fetchMore,
-    fetchMoreStats: fetchMoreStats
+    setSearchTerm: setSearchTerm
   }, dispatch )
 }
 
@@ -30,8 +28,6 @@ class SearchResultsPage extends Component {
     return (
       <div>
         <SearchForm
-          fetchSearchResults = { this.props.fetchSearchResults }
-          fetchSearchResultsStats = { this.props.fetchSearchResultsStats }
           setSearchTerm = { this.props.setSearchTerm }
         />
         <VideoList
@@ -39,8 +35,7 @@ class SearchResultsPage extends Component {
           searchResultsStats = { this.props.searchResultsStats }
           selectVideo = { this.props.selectVideo }
           searchTerm = { this.props.searchTerm }
-          fetchMore = { this.props.fetchMore }
-          fetchMoreStats = { this.props.fetchMoreStats }
+          fetchSearchResults = { this.props.fetchSearchResults }
           fetchSearchResultsStats = { this.props.fetchSearchResultsStats }
           selectVideoStats = { this.props.selectVideoStats }
         />

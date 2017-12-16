@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { fetchSearchResults, fetchSearchResultsStats, setSearchTerm, emptyComments, fetchComments, fetchMoreComments } from './../actions'
+import { setSearchTerm, fetchComments } from './../actions'
 import SearchForm from './../components/SearchForm'
 import Video from './../components/Video'
 import CommentThread from './../components/CommentThread'
 
 const mapStateToProps = ( state ) => {
   return {
-    searchResults: state.searchResults,
-    searchResultsStats: state.searchResultsStats,
     selectedVideo: state.selectedVideo,
     selectedVideoStats: state.selectedVideoStats,
     commentList: state.commentList
@@ -18,12 +16,8 @@ const mapStateToProps = ( state ) => {
 
 const mapDispatchToProps = ( dispatch ) => {
   return bindActionCreators({
-    fetchSearchResults: fetchSearchResults,
-    fetchSearchResultsStats: fetchSearchResultsStats,
     setSearchTerm: setSearchTerm,
-    fetchComments: fetchComments,
-    fetchMoreComments: fetchMoreComments,
-    emptyComments: emptyComments
+    fetchComments: fetchComments
   }, dispatch )
 }
 
@@ -37,8 +31,6 @@ class VideoPage extends Component {
     return (
       <div>
         <SearchForm
-          fetchSearchResults = { this.props.fetchSearchResults }
-          fetchSearchResultsStats = { this.props.fetchSearchResultsStats }
           setSearchTerm = { this.props.setSearchTerm }
         />
         <Video
@@ -49,8 +41,6 @@ class VideoPage extends Component {
           video = { this.props.selectedVideo }
           commentList = { this.props.commentList }
           fetchComments = { this.props.fetchComments }
-          fetchMoreComments = { this.props.fetchMoreComments }
-          emptyComments = { this.props.emptyComments }
         />
       </div>
     )

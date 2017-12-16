@@ -18,13 +18,9 @@ class SearchForm extends Component {
 	handleSubmit = ( event ) => {
 		event.preventDefault()
 		if ( this.state.searchTerm !== '' ) {
-			const searchTerm = this.state.searchTerm
-			this.setState({ searchTerm: '' })
-			this.props.setSearchTerm( searchTerm )
-			this.props.fetchSearchResults( searchTerm )
-				.then( output => this.props.fetchSearchResultsStats( output )
-					.then( this.props.history.push( `/search=${ searchTerm }` ))
-				)
+			this.props.setSearchTerm( this.state.searchTerm )
+      this.props.history.push( `/search=${ this.state.searchTerm }` )
+      this.setState({ searchTerm: '' })
 		}
 	}
 
