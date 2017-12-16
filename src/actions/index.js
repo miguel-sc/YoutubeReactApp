@@ -12,9 +12,12 @@ export const fetchSearchResults = ( searchTerm ) => {
 
 export const fetchSearchResultsStats = ( action ) => {
   const items = action.payload.items
-  var id = items[ 0 ].id.videoId
-  for ( var i = 1; i < items.length; i++ ) {
-    id += ',' + items[i].id.videoId
+  var id = ''
+  if ( items[ 0 ] ) {
+    id = items[ 0 ].id.videoId
+    for ( var i = 1; i < items.length; i++ ) {
+      id += ',' + items[i].id.videoId
+    }
   }
   const url = `${ BASE_URL }/videos?part=statistics&id=${ id }&key=${ API_KEY }`
   const searchResultsStats = fetch( url ).then( response => response.json() )

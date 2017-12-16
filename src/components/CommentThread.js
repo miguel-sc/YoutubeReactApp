@@ -40,6 +40,7 @@ class CommentThread extends Component {
   render() {
     const spinner = <Spinner/>
     var items = []
+    var hasMore = true
     if ( this.props.commentList.items ) {
       for ( var index = 0; index < this.props.commentList.items.length; index++ ) {
         items.push(
@@ -49,12 +50,15 @@ class CommentThread extends Component {
           />
         )
       }
+      if ( !this.props.commentList.nextPageToken ) {
+        hasMore = false
+      }
     }
     return (
       <div>
         <InfiniteScroll
           loadMore = { this.loadItems.bind( this ) }
-          hasMore = { true }
+          hasMore = { hasMore }
           initialLoad = { true }
           loader = { spinner }
         >

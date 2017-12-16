@@ -37,11 +37,15 @@ class VideoList extends Component {
           />
         )
       }
+      var hasMore = false
+      if ( this.props.searchResults.nextPageToken ) {
+        hasMore = true
+      }
       return (
         <div>
           <InfiniteScroll
             loadMore = { this.loadItems.bind( this )}
-            hasMore = { true }
+            hasMore = { hasMore }
             initialLoad = { true }
             loader = { spinner }>
             <ul>
