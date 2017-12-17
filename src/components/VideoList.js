@@ -14,16 +14,16 @@ class VideoList extends Component {
 	}
 
   loadItems( page ) {
-    if (( this.props.searchTerm ) && ( this.state.loadMore )) {
-      if ( this.props.searchResults.nextPageToken ) {
+    if ( this.state.loadMore ) {
+      if ( this.props.videoList.nextPageToken ) {
         this.setState({ loadMore: false })
-        this.props.fetchSearchResults( this.props.searchTerm, this.props.searchResults.nextPageToken )
-          .then( output => this.props.fetchSearchResultsStats( output )
+        this.props.fetchVideoList( this.props.videoList.nextPageToken )
+          .then( output => this.props.fetchVideoListStats( output )
             .then( this.setState({ loadMore: true })))
-      } else if ( !this.props.searchResults.items ) {
+      } else if ( !this.props.videoList.items ) {
         this.setState({ loadMore: false })
-        this.props.fetchSearchResults( this.props.searchTerm )
-          .then( output => this.props.fetchSearchResultsStats( output )
+        this.props.fetchVideoList( )
+          .then( output => this.props.fetchVideoListStats( output )
             .then( this.setState({ loadMore: true })))
       } else {
         this.setState({ hasMore: false })
@@ -34,14 +34,14 @@ class VideoList extends Component {
   render() {
     const spinner = <Spinner/>
     var items = []
-    if (( this.props.searchResults.items ) && ( this.props.searchResultsStats.items )) {
-      const length = Math.min( this.props.searchResults.items.length, this.props.searchResultsStats.items.length )
+    if (( this.props.videoList.items ) && ( this.props.videoListStats.items )) {
+      const length = Math.min( this.props.videoList.items.length, this.props.videoListStats.items.length )
       for ( var index = 0; index < length; index++ ) {
         items.push(
           <VideoListItem
-            key = { this.props.searchResults.items[ index ].id.videoId }
-            video = { this.props.searchResults.items[ index ]}
-            videoStats = { this.props.searchResultsStats.items[ index ]}
+            key = { this.props.videoList.items[ index ].id.videoId }
+            video = { this.props.videoList.items[ index ]}
+            videoStats = { this.props.videoListStats.items[ index ]}
             selectVideo = { this.props.selectVideo }
             selectVideoStats = { this.props.selectVideoStats }
           />

@@ -31,12 +31,11 @@ class SearchResultsPage extends Component {
           setSearchTerm = { this.props.setSearchTerm }
         />
         <VideoList
-          searchResults = { this.props.searchResults }
-          searchResultsStats = { this.props.searchResultsStats }
+          videoList = { this.props.searchResults }
+          videoListStats = { this.props.searchResultsStats }
           selectVideo = { this.props.selectVideo }
-          searchTerm = { this.props.searchTerm }
-          fetchSearchResults = { this.props.fetchSearchResults }
-          fetchSearchResultsStats = { this.props.fetchSearchResultsStats }
+          fetchVideoList = { ( pageToken ) => this.props.fetchSearchResults( this.props.searchTerm, pageToken ) }
+          fetchVideoListStats = { this.props.fetchSearchResultsStats }
           selectVideoStats = { this.props.selectVideoStats }
         />
       </div>
