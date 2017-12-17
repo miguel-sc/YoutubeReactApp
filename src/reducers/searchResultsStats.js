@@ -5,9 +5,6 @@ const searchResultsStats = ( state = {}, action ) => {
     }
     return action.payload
   }
-  else if ( action.type === 'EMPTYSEARCHRESULTS' ) {
-    return {}
-  }
   else if ( action.type === 'SEARCHTERM' ) {
     return {}
   }

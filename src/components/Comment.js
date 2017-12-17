@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faThumbsUp } from '@fortawesome/fontawesome-free-solid'
 
 function small2big(url)
 {
@@ -19,8 +21,9 @@ class Comment extends Component {
         </div>
         <div className = 'comment-text' >
           <p>
-            <b>{ this.props.comment.snippet.topLevelComment.snippet.authorDisplayName }</b>
-            { ' - ' + this.props.comment.snippet.topLevelComment.snippet.likeCount + ' upvotes' }
+            <b>{ this.props.comment.snippet.topLevelComment.snippet.authorDisplayName + ' ' }</b>
+            <FontAwesomeIcon icon = { faThumbsUp } />
+            { ' ' + this.props.comment.snippet.topLevelComment.snippet.likeCount }
           </p>
           <p>{ this.props.comment.snippet.topLevelComment.snippet.textDisplay }</p>
         </div>

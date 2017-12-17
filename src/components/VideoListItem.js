@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Thumbnail from './Thumbnail'
 import styled from 'styled-components'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faEye, faCalendarAlt } from '@fortawesome/fontawesome-free-solid'
 
 function getDate( string ) {
   return string.substring( 8, 10 ) + '.' + string.substring( 5, 7 ) + '.' + string.substring( 0, 4 )
@@ -42,8 +44,8 @@ class VideoListItem extends Component {
             />
             <p>{ this.props.video.snippet.title }</p>
             <p>{ this.props.video.snippet.channelTitle }</p>
-            <p>{ getViews( this.props.videoStats.statistics.viewCount ) + ' views' }</p>
-            <p>{ getDate( this.props.video.snippet.publishedAt )}</p>
+            <p><FontAwesomeIcon icon = { faEye } />{ ' ' + getViews( this.props.videoStats.statistics.viewCount )}</p>
+            <p><FontAwesomeIcon icon = { faCalendarAlt } />{ ' ' + getDate( this.props.video.snippet.publishedAt )}</p>
           </Link>
 			  </VideoListItemContainer>
       )
