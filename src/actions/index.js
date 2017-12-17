@@ -34,7 +34,7 @@ export const selectVideo = ( video ) => {
   }
 }
 
-export const selectVideoStats = ( videoStats) => {
+export const selectVideoStats = ( videoStats ) => {
   return {
     type: 'SELECTVIDEO_STATS',
     payload: videoStats

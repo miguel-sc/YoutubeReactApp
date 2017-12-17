@@ -14,13 +14,13 @@ class VideoList extends Component {
 	}
 
   loadItems( page ) {
-    if (( this.props.searchTerm ) && ( this.state.loadMore)) {
+    if (( this.props.searchTerm ) && ( this.state.loadMore )) {
       if ( this.props.searchResults.nextPageToken ) {
         this.setState({ loadMore: false })
         this.props.fetchSearchResults( this.props.searchTerm, this.props.searchResults.nextPageToken )
           .then( output => this.props.fetchSearchResultsStats( output )
             .then( this.setState({ loadMore: true })))
-      } else if (!this.props.searchResults.items){
+      } else if ( !this.props.searchResults.items ) {
         this.setState({ loadMore: false })
         this.props.fetchSearchResults( this.props.searchTerm )
           .then( output => this.props.fetchSearchResultsStats( output )

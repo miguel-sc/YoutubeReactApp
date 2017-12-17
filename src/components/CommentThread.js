@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
+import styled from 'styled-components'
 import Comment from './Comment'
 import Spinner from './Spinner'
 
@@ -43,7 +44,7 @@ class CommentThread extends Component {
       }
     }
     return (
-      <div>
+      <CommentThreadContainer>
         <InfiniteScroll
           loadMore = { this.loadItems.bind( this ) }
           hasMore = { this.state.hasMore }
@@ -54,9 +55,19 @@ class CommentThread extends Component {
             { items }
           </ul>
         </InfiniteScroll>
-      </div>
+      </CommentThreadContainer>
     )
   }
 }
 
 export default CommentThread
+
+const CommentThreadContainer = styled.div`
+  ul {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    list-style-type: none;
+  }
+`

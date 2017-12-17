@@ -53,7 +53,7 @@ const SearchFormContainer = styled.div`
 		height: 28px;
 		padding-left: 20px;
 		padding-right: 20px;
-		border: 1px solid #ccc;
+		border: 1px solid #ddd;
 	}
 
 	input[ type = submit ] {
