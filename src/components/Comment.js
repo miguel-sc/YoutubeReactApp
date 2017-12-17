@@ -21,7 +21,7 @@ class Comment extends Component {
         </div>
         <div className = 'comment-text' >
           <p>
-            <b>{ this.props.comment.snippet.topLevelComment.snippet.authorDisplayName + ' ' }</b>
+            <b>{ this.props.comment.snippet.topLevelComment.snippet.authorDisplayName + ' ' }</b><br/>
             <FontAwesomeIcon icon = { faThumbsUp } />
             { ' ' + this.props.comment.snippet.topLevelComment.snippet.likeCount }
           </p>
