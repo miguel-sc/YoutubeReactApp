@@ -20,12 +20,12 @@ class Comment extends Component {
           />
         </div>
         <div className = 'comment-text' >
-          <p>
-            <b>{ this.props.comment.snippet.topLevelComment.snippet.authorDisplayName + ' ' }</b><br/>
+          <p>{ this.props.comment.snippet.topLevelComment.snippet.textDisplay }</p>
+          <p className = 'gray-text' >
             <FontAwesomeIcon icon = { faThumbsUp } />
             { ' ' + this.props.comment.snippet.topLevelComment.snippet.likeCount }
+            { ' - ' + this.props.comment.snippet.topLevelComment.snippet.authorDisplayName }
           </p>
-          <p>{ this.props.comment.snippet.topLevelComment.snippet.textDisplay }</p>
         </div>
       </CommentContainer>
     )
@@ -52,7 +52,13 @@ const CommentContainer = styled.li`
   }
 
   img {
+    width: 48px;
+    height: 48px;
     margin-top: 5px;
     border-radius: 24px;
+  }
+
+  .gray-text {
+    color: #555;
   }
 `

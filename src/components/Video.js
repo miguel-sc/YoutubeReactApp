@@ -42,8 +42,12 @@ class Video extends Component {
           </VideoContainer>
           <p>{ this.props.video.snippet.title }</p>
           <p>{ this.props.video.snippet.channelTitle }</p>
-          <p><FontAwesomeIcon icon = { faEye } />{ ' ' + getViews( this.props.videoStats.statistics.viewCount ) }</p>
-          <p><FontAwesomeIcon icon = { faCalendarAlt } />{ ' ' + getDate( this.props.video.snippet.publishedAt )}</p>
+          <p>
+            <FontAwesomeIcon icon = { faCalendarAlt } />
+            { ' ' + getDate( this.props.video.snippet.publishedAt ) + ' ' }
+            <FontAwesomeIcon icon = { faEye } />
+            { ' ' + getViews( this.props.videoStats.statistics.viewCount ) }
+          </p>
         </div>
       )
     } else {

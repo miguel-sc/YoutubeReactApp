@@ -48,6 +48,9 @@ class VideoList extends Component {
         )
       }
     }
+    if (( !this.props.videoList.items ) && ( !this.state.hasMore )) {
+      this.setState({ hasMore: true })
+    }
     return (
       <div>
         <InfiniteScroll
