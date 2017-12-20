@@ -5,7 +5,7 @@ import { fetchSearchResults, fetchSearchResultsStats, selectVideo, setSearchTerm
 import SearchForm from './../components/SearchForm'
 import VideoList from './../components/VideoList'
 
-const mapStateToProps = ( state ) => {
+const mapStateToProps = (state) => {
   return {
     searchResults: state.searchResults,
     searchResultsStats: state.searchResultsStats,
@@ -13,14 +13,14 @@ const mapStateToProps = ( state ) => {
   }
 }
 
-const mapDispatchToProps = ( dispatch ) => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchSearchResults: fetchSearchResults,
     fetchSearchResultsStats: fetchSearchResultsStats,
     selectVideo: selectVideo,
     selectVideoStats: selectVideoStats,
     setSearchTerm: setSearchTerm
-  }, dispatch )
+  }, dispatch)
 }
 
 class SearchResultsPage extends Component {
@@ -34,7 +34,7 @@ class SearchResultsPage extends Component {
           videoList = { this.props.searchResults }
           videoListStats = { this.props.searchResultsStats }
           selectVideo = { this.props.selectVideo }
-          fetchVideoList = { ( pageToken ) => this.props.fetchSearchResults( this.props.searchTerm, pageToken ) }
+          fetchVideoList = { (pageToken) => this.props.fetchSearchResults(this.props.searchTerm, pageToken) }
           fetchVideoListStats = { this.props.fetchSearchResultsStats }
           selectVideoStats = { this.props.selectVideoStats }
         />
@@ -43,4 +43,4 @@ class SearchResultsPage extends Component {
   }
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )( SearchResultsPage )
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsPage)

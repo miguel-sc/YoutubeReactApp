@@ -4,22 +4,22 @@ import styled from 'styled-components'
 
 class SearchForm extends Component {
 
-	constructor ( props ) {
-		super( props )
+	constructor (props) {
+		super(props)
 		this.state = {
 			searchTerm: ''
 		}
 	}
 
-	handleInputChange = ( event ) => {
+	handleInputChange = (event) => {
 		this.setState({ searchTerm: event.target.value })
 	}
 
-	handleSubmit = ( event ) => {
+	handleSubmit = (event) => {
 		event.preventDefault()
-		if ( this.state.searchTerm !== '' ) {
-			this.props.setSearchTerm( this.state.searchTerm )
-      this.props.history.push( `/search=${ this.state.searchTerm }` )
+		if (this.state.searchTerm !== '') {
+			this.props.setSearchTerm(this.state.searchTerm)
+      this.props.history.push(`/search=${ this.state.searchTerm }`)
       this.setState({ searchTerm: '' })
 		}
 	}
@@ -42,7 +42,7 @@ class SearchForm extends Component {
   }
 }
 
-export default withRouter( SearchForm )
+export default withRouter(SearchForm)
 
 const SearchFormContainer = styled.div`
 	margin-top: 25px;

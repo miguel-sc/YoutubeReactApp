@@ -6,7 +6,7 @@ import SearchForm from './../components/SearchForm'
 import Video from './../components/Video'
 import CommentThread from './../components/CommentThread'
 
-const mapStateToProps = ( state ) => {
+const mapStateToProps = (state) => {
   return {
     selectedVideo: state.selectedVideo,
     selectedVideoStats: state.selectedVideoStats,
@@ -14,17 +14,17 @@ const mapStateToProps = ( state ) => {
   }
 }
 
-const mapDispatchToProps = ( dispatch ) => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     setSearchTerm: setSearchTerm,
     fetchComments: fetchComments
-  }, dispatch )
+  }, dispatch)
 }
 
 class VideoPage extends Component {
 
   componentWillMount() {
-    window.scrollTo( 0, 0 )
+    window.scrollTo(0, 0)
   }
 
   render() {
@@ -47,4 +47,4 @@ class VideoPage extends Component {
   }
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )( VideoPage )
+export default connect(mapStateToProps, mapDispatchToProps)(VideoPage)

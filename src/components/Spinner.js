@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import reactLogo from './../svg/reactLogo.svg'
 
 class Spinner extends Component {
-  
+
   render() {
     return (
       <SpinnerContainer>
@@ -16,8 +16,8 @@ class Spinner extends Component {
 export default Spinner
 
 const reactLogoSpin = keyframes`
-  from { transform: rotate( 0deg ); }
-  to { transform: rotate( 360deg ); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 `
 
 const SpinnerContainer = styled.div`
@@ -28,7 +28,7 @@ const SpinnerContainer = styled.div`
   margin-bottom: 25px;
 
   img {
-    animation: ${reactLogoSpin} infinite 0.8s linear;
+    animation: ${ reactLogoSpin } infinite 0.8s linear;
     height: 80px;
   }
 `

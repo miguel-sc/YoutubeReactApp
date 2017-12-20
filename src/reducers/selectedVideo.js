@@ -1,5 +1,5 @@
-const selectedVideo = ( state = {}, action ) => {
-  if ( action.type === 'SELECTVIDEO' ) {
+const selectedVideo = (state = {}, action) => {
+  if (action.type === 'SELECTVIDEO') {
     return action.payload
   }
   return state

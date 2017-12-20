@@ -29,15 +29,15 @@ const AppContainer = styled.div`
   padding-left: 25px;
   padding-right: 25px;
 
-  @media ( min-width: 540px ) {
+  @media(min-width: 540px) {
 		width: 490px;
 	}
 
-  @media ( min-width: 790px ) {
+  @media(min-width: 790px) {
 		width: 740px;
 	}
 
-  @media ( min-width: 1040px ) {
+  @media(min-width: 1040px) {
 		width: 990px;
 	}
 `

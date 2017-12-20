@@ -8,12 +8,12 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import reducer from './reducers'
 
-const createStoreWithMiddleware = applyMiddleware( ReduxPromise )( createStore )
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore)
 
 render(
-  <Provider store = { createStoreWithMiddleware( reducer )}>
+  <Provider store = { createStoreWithMiddleware(reducer) }>
     <App/>
   </Provider>,
-  document.getElementById( 'root' )
+  document.getElementById('root')
 )
 registerServiceWorker()

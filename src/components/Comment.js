@@ -5,7 +5,7 @@ import { faThumbsUp } from '@fortawesome/fontawesome-free-solid'
 
 function small2big(url)
 {
-   return url.replace( /(\/.*s)28(.*\/photo.jpg)$/, '$148$2' )
+   return url.replace(/(\/.*s)28(.*\/photo.jpg)$/, '$148$2')
 }
 
 class Comment extends Component {
@@ -15,7 +15,7 @@ class Comment extends Component {
       <CommentContainer>
         <div>
           <img
-            src = { small2big( this.props.comment.snippet.topLevelComment.snippet.authorProfileImageUrl ) }
+            src = { small2big(this.props.comment.snippet.topLevelComment.snippet.authorProfileImageUrl) }
             alt = { this.props.comment.snippet.topLevelComment.snippet.authorDisplayName }
           />
         </div>

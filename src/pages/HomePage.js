@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 import { setSearchTerm } from './../actions'
 import SearchForm from './../components/SearchForm'
 
-const mapStateToProps = ( state ) => {
+const mapStateToProps = (state) => {
   return {}
 }
 
-const mapDispatchToProps = ( dispatch ) => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     setSearchTerm: setSearchTerm
-  }, dispatch )
+  }, dispatch)
 }
 
 class HomePage extends Component {
@@ -26,4 +26,4 @@ class HomePage extends Component {
   }
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )( HomePage )
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
