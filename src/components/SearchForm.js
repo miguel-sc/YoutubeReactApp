@@ -34,6 +34,7 @@ class SearchForm extends Component {
 				    value = { this.state.searchTerm }
 				    onChange = { this.handleInputChange }
 				    placeholder = 'Search YouTube'
+            autoFocus
 					/>
 					<input type = 'submit' />
 				</form>
@@ -55,6 +56,11 @@ const SearchFormContainer = styled.div`
 		padding-right: 20px;
 		border: 1px solid #ddd;
 	}
+
+  input[ type = text ]:focus {
+    outline: none;
+    border: 1px solid #666;
+  }
 
 	input[ type = submit ] {
 		display: none;
