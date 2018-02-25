@@ -19,12 +19,22 @@ class VideoList extends Component {
         this.setState({ loadMore: false })
         this.props.fetchVideoList(this.props.videoList.nextPageToken)
           .then((output) => this.props.fetchVideoListStats(output)
-            .then((output) => this.setState({ loadMore: true })))
+            .then((output) => {
+              if (output.payload.error) {
+                this.setState({ hasMore: false })
+              }
+              this.setState({ loadMore: true })
+            }))
       } else if (!this.props.videoList.items) {
         this.setState({ loadMore: false })
         this.props.fetchVideoList()
           .then((output) => this.props.fetchVideoListStats(output)
-            .then((output) => this.setState({ loadMore: true })))
+            .then((output) => {
+              if (output.payload.error) {
+                this.setState({ hasMore: false })
+              }
+              this.setState({ loadMore: true })
+            }))
       } else {
         this.setState({ hasMore: false })
       }

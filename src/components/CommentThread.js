@@ -19,11 +19,21 @@ class CommentThread extends Component {
       if (this.props.commentList.nextPageToken) {
         this.setState({ loadMore: false })
         this.props.fetchComments(this.props.video.id.videoId, this.props.commentList.nextPageToken)
-          .then((output) => this.setState({ loadMore: true }))
+          .then((output) => {
+            if (output.payload.error) {
+              this.setState({ hasMore: false })
+            }
+            this.setState({ loadMore: true })
+          })
       } else if (!this.props.commentList.items){
         this.setState({ loadMore: false })
         this.props.fetchComments(this.props.video.id.videoId)
-          .then((output) => this.setState({ loadMore: true }))
+          .then((output) => {
+            if (output.payload.error) {
+              this.setState({ hasMore: false })
+            }
+            this.setState({ loadMore: true })
+          })
       } else {
         this.setState({ hasMore: false })
       }
