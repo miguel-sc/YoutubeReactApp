@@ -42,7 +42,7 @@ class VideoListItem extends Component {
             <Thumbnail
               video = { this.props.video }
             />
-            <p>{ this.props.video.snippet.title }</p>
+            <p className = 'title'>{ this.props.video.snippet.title }</p>
             <p>{ this.props.video.snippet.channelTitle }</p>
             <p>
               <FontAwesomeIcon icon = { faCalendarAlt } />
@@ -64,5 +64,10 @@ const VideoListItemContainer = styled.li`
   p {
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+
+  .title {
+    max-height: 36px;
+    overflow: hidden;
   }
 `

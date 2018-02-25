@@ -40,7 +40,7 @@ class Video extends Component {
               frameBorder = '0'
             />
           </VideoContainer>
-          <p>{ this.props.video.snippet.title }</p>
+          <h4>{ this.props.video.snippet.title }</h4>
           <p>{ this.props.video.snippet.channelTitle }</p>
           <p>
             <FontAwesomeIcon icon = { faCalendarAlt } />
