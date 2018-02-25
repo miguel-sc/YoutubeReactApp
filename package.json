@@ -1,7 +1,6 @@
 {
-  "name": "react-tube",
+  "name": "YoutubeReactApp",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@fortawesome/fontawesome": "^1.0.1",
     "@fortawesome/fontawesome-free-solid": "^5.0.1",
