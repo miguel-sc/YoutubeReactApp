@@ -34,7 +34,6 @@ class SearchForm extends Component {
 				    value = { this.state.searchTerm }
 				    onChange = { this.handleInputChange }
 				    placeholder = 'Search YouTube'
-            autoFocus
             autoComplete = 'off'
 					/>
 					<input type = 'submit' />
