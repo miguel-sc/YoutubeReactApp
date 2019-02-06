@@ -51,7 +51,7 @@ class VideoListItem extends Component {
               { ' ' + getViews(this.props.videoStats.statistics.viewCount)}
             </p>
           </Link>
-			  </VideoListItemContainer>
+        </VideoListItemContainer>
       )
     }
     return <li/>

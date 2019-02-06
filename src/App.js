@@ -30,14 +30,14 @@ const AppContainer = styled.div`
   padding-right: 25px;
 
   @media(min-width: 540px) {
-		width: 490px;
-	}
+    width: 490px;
+  }
 
   @media(min-width: 790px) {
-		width: 740px;
-	}
+    width: 740px;
+  }
 
   @media(min-width: 1040px) {
-		width: 990px;
-	}
+    width: 990px;
+  }
 `

@@ -6,12 +6,12 @@ import Spinner from './Spinner'
 class VideoList extends Component {
 
   constructor(props) {
-		super(props)
-		this.state = {
-			loadMore: true,
+    super(props)
+    this.state = {
+      loadMore: true,
       hasMore: true
-		}
-	}
+    }
+  }
 
   loadItems(page) {
     if (this.state.loadMore) {

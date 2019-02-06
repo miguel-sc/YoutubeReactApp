@@ -7,12 +7,12 @@ import Spinner from './Spinner'
 class CommentThread extends Component {
 
   constructor(props) {
-		super(props)
-		this.state = {
-			hasMore: true,
+    super(props)
+    this.state = {
+      hasMore: true,
       loadMore: true
-		}
-	}
+    }
+  }
 
   loadItems(page) {
     if ((this.props.video.id) && (this.state.loadMore)) {
